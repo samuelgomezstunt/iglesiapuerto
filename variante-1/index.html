@@ -339,7 +339,24 @@ max-width: 64rem;}/* End custom CSS */
     color: #0284c7 !important;
   }
 }
-/* Mobile menu and dropdown toggle styles */
+/* Mobile menu and toggle styles */
+.elementor-menu-toggle {
+  cursor: pointer !important;
+  z-index: 99999 !important;
+  position: relative !important;
+}
+.elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--open {
+  display: none !important;
+}
+.elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--close {
+  display: block !important;
+}
+.elementor-menu-toggle:not(.elementor-active) .elementor-menu-toggle__icon--open {
+  display: block !important;
+}
+.elementor-menu-toggle:not(.elementor-active) .elementor-menu-toggle__icon--close {
+  display: none !important;
+}
 @media (max-width: 1024px) {
   .elementor-nav-menu--dropdown.is-open {
     display: block !important;
@@ -347,12 +364,20 @@ max-width: 64rem;}/* End custom CSS */
     opacity: 1 !important;
     visibility: visible !important;
     transform: scaleY(1) !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15) !important;
+    border-radius: 0 0 12px 12px !important;
+    padding: 10px 0 !important;
   }
   .elementor-nav-menu--dropdown li.menu-item-has-children > ul.sub-menu.is-open {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     padding-left: 15px !important;
+  }
+  .elementor-nav-menu--dropdown .elementor-sub-item {
+    font-size: 15px !important;
+    padding: 8px 20px !important;
   }
 }
 </style>
@@ -974,7 +999,7 @@ max-width: 64rem;}/* End custom CSS */
     <div class="step-num">1</div>
     <div class="step-content">
       <h3>📍 Llega sin prisa</h3>
-      <p>Te recomendamos llegar unos 10 minutos antes para aparcar y entrar con tranquilidad. Nos reunimos los <strong>domingos a las 11:30h</strong> en Calle Don Quijote, 42, Puerto del Rosario.</p>
+      <p>Te recomendamos llegar unos 10 minutos antes para aparcar y entrar con tranquilidad. Los <strong>domingos nos reunimos a las 11:30h</strong> en Calle Don Quijote, 42, Puerto del Rosario.</p>
     </div>
     <div class="step-icon-arrow">→</div>
   </div>
@@ -983,7 +1008,7 @@ max-width: 64rem;}/* End custom CSS */
     <div class="step-num">2</div>
     <div class="step-content">
       <h3>🤝 Te damos la bienvenida</h3>
-      <p>Al llegar, alguien de nuestro equipo te recibirá con una sonrisa y te indicará el lugar. Ven como te sientas más cómodo, no existe ningún código de vestimenta.</p>
+      <p>Al llegar, alguien de nuestra iglesia te recibirá. Ven como te sientas más cómodo, no existe ningún código de vestimenta.</p>
     </div>
     <div class="step-icon-arrow">→</div>
   </div>
@@ -1501,39 +1526,78 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 
 <script id="nav-menu-fix-js">
 (function() {
-  function initNavMenuEnhancements() {
-    document.querySelectorAll('.elementor-widget-nav-menu').forEach(function(widget) {
-      var toggle = widget.querySelector('.elementor-menu-toggle');
-      var dropdown = widget.querySelector('.elementor-nav-menu__container.elementor-nav-menu--dropdown');
-      if (toggle && dropdown && !toggle._hasMenuFix) {
-        toggle._hasMenuFix = true;
-        toggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var isActive = toggle.classList.toggle('elementor-active');
-          toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-          dropdown.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-          dropdown.classList.toggle('is-open', isActive);
-        });
+  function setupNavMenu(widget) {
+    var toggle = widget.querySelector('.elementor-menu-toggle');
+    var dropdown = widget.querySelector('.elementor-nav-menu__container.elementor-nav-menu--dropdown');
+    if (!toggle || !dropdown) return;
+    
+    if (!toggle._cleanFixed) {
+      var newToggle = toggle.cloneNode(true);
+      newToggle._cleanFixed = true;
+      toggle.parentNode.replaceChild(newToggle, toggle);
+      toggle = newToggle;
+
+      function closeMenu() {
+        toggle.classList.remove('elementor-active');
+        toggle.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
+        dropdown.classList.remove('is-open');
       }
-      
-      widget.querySelectorAll('li.menu-item-has-children > a').forEach(function(anchor) {
-        if (!anchor._hasSubFix) {
-          anchor._hasSubFix = true;
-          anchor.addEventListener('click', function(e) {
-            var subMenu = anchor.parentElement.querySelector('ul.sub-menu');
-            if (subMenu) {
-              if (window.innerWidth <= 1024 || anchor.getAttribute('href') === '#' || anchor.getAttribute('href') === '') {
-                e.preventDefault();
-                e.stopPropagation();
-                var isOpen = subMenu.classList.toggle('is-open');
-                subMenu.style.display = isOpen ? 'block' : 'none';
-              }
-            }
-          });
+
+      function openMenu() {
+        toggle.classList.add('elementor-active');
+        toggle.setAttribute('aria-expanded', 'true');
+        dropdown.setAttribute('aria-hidden', 'false');
+        dropdown.classList.add('is-open');
+      }
+
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        var isCurrentlyActive = toggle.classList.contains('elementor-active');
+        if (isCurrentlyActive) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }, true);
+
+      document.addEventListener('click', function(e) {
+        if (!widget.contains(e.target)) {
+          closeMenu();
         }
       });
+
+      dropdown.querySelectorAll('a:not(.elementor-item-anchor)').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 1024) {
+            closeMenu();
+          }
+        });
+      });
+    }
+
+    widget.querySelectorAll('li.menu-item-has-children > a').forEach(function(anchor) {
+      if (!anchor._hasSubFix) {
+        anchor._hasSubFix = true;
+        anchor.addEventListener('click', function(e) {
+          var subMenu = anchor.parentElement.querySelector('ul.sub-menu');
+          if (subMenu) {
+            if (window.innerWidth <= 1024 || anchor.getAttribute('href') === '#' || anchor.getAttribute('href') === '') {
+              e.preventDefault();
+              e.stopPropagation();
+              var isOpen = subMenu.classList.toggle('is-open');
+              subMenu.style.display = isOpen ? 'block' : 'none';
+            }
+          }
+        });
+      }
     });
+  }
+
+  function initNavMenuEnhancements() {
+    document.querySelectorAll('.elementor-widget-nav-menu').forEach(setupNavMenu);
   }
 
   if (document.readyState === 'loading') {
