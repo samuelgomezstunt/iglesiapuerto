@@ -13,6 +13,73 @@
         a { display: inline-block; background: #0284c7; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; }
         a:hover { background: #0369a1; }
     </style>
+
+<!-- Nav Menu & Dropdown Robust Styles & Behavior -->
+<style id="nav-menu-custom-styles">
+/* Ensure desktop sub-menu displays on hover and focus */
+@media (min-width: 1025px) {
+  .elementor-nav-menu--main li.menu-item-has-children {
+    position: relative !important;
+  }
+  .elementor-nav-menu--main li.menu-item-has-children:hover > ul.sub-menu,
+  .elementor-nav-menu--main li.menu-item-has-children:focus-within > ul.sub-menu,
+  .elementor-nav-menu--main li.menu-item-has-children > a:hover + ul.sub-menu,
+  .elementor-nav-menu--main li.menu-item-has-children > ul.sub-menu:hover {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 99999 !important;
+    background-color: #FFFFFF !important;
+    min-width: 200px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+    border-radius: 6px !important;
+    padding: 8px 0 !important;
+    list-style: none !important;
+    margin: 0 !important;
+  }
+  .elementor-nav-menu--main li.menu-item-has-children > ul.sub-menu li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .elementor-nav-menu--main li.menu-item-has-children > ul.sub-menu li a {
+    display: block !important;
+    padding: 10px 20px !important;
+    color: #1e293b !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+    white-space: nowrap !important;
+  }
+  .elementor-nav-menu--main li.menu-item-has-children > ul.sub-menu li a:hover,
+  .elementor-nav-menu--main li.menu-item-has-children > ul.sub-menu li a.elementor-item-active {
+    background-color: #f1f5f9 !important;
+    color: #0284c7 !important;
+  }
+}
+/* Mobile menu and dropdown toggle styles */
+@media (max-width: 1024px) {
+  .elementor-nav-menu--dropdown.is-open {
+    display: block !important;
+    max-height: 1000vh !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scaleY(1) !important;
+  }
+  .elementor-nav-menu--dropdown li.menu-item-has-children > ul.sub-menu.is-open {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding-left: 15px !important;
+  }
+}
+</style>
+
 </head>
 <body>
     <div class="card">
@@ -21,5 +88,52 @@
         <p>El contenido que buscas no está disponible. Te estamos redirigiendo a la página principal de la Iglesia.</p>
         <a href="/iglesiapuerto/">Ir a Inicio</a>
     </div>
+
+<script id="nav-menu-fix-js">
+(function() {
+  function initNavMenuEnhancements() {
+    document.querySelectorAll('.elementor-widget-nav-menu').forEach(function(widget) {
+      var toggle = widget.querySelector('.elementor-menu-toggle');
+      var dropdown = widget.querySelector('.elementor-nav-menu__container.elementor-nav-menu--dropdown');
+      if (toggle && dropdown && !toggle._hasMenuFix) {
+        toggle._hasMenuFix = true;
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isActive = toggle.classList.toggle('elementor-active');
+          toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+          dropdown.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          dropdown.classList.toggle('is-open', isActive);
+        });
+      }
+      
+      widget.querySelectorAll('li.menu-item-has-children > a').forEach(function(anchor) {
+        if (!anchor._hasSubFix) {
+          anchor._hasSubFix = true;
+          anchor.addEventListener('click', function(e) {
+            var subMenu = anchor.parentElement.querySelector('ul.sub-menu');
+            if (subMenu) {
+              if (window.innerWidth <= 1024 || anchor.getAttribute('href') === '#' || anchor.getAttribute('href') === '') {
+                e.preventDefault();
+                e.stopPropagation();
+                var isOpen = subMenu.classList.toggle('is-open');
+                subMenu.style.display = isOpen ? 'block' : 'none';
+              }
+            }
+          });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavMenuEnhancements);
+  } else {
+    initNavMenuEnhancements();
+  }
+  window.addEventListener('load', initNavMenuEnhancements);
+})();
+</script>
+
 </body>
 </html>
