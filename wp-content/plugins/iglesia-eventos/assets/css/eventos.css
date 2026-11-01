@@ -608,12 +608,18 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN & MOBILE USABILITY
    ========================================================================== */
 @media (max-width: 1024px) {
+  .ige-featured-card {
+    padding: 28px;
+  }
   .ige-featured-inner {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 28px;
+  }
+  .ige-media-img {
+    max-height: 440px;
   }
   .ige-cols-3, .ige-cols-4 {
     grid-template-columns: repeat(2, 1fr);
@@ -621,31 +627,197 @@
 }
 
 @media (max-width: 767px) {
+  /* Tarjeta destacada: contenedor ergonómico sin desbordes */
+  .ige-featured-section {
+    margin-bottom: 28px;
+  }
+
   .ige-featured-card {
-    padding: 20px;
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   }
-  .ige-featured-title {
-    font-size: 28px;
-  }
-  .ige-featured-excerpt {
-    font-size: 17px;
-  }
-  .ige-cols-2, .ige-cols-3, .ige-cols-4 {
+
+  .ige-featured-inner {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
-  .ige-countdown-grid {
-    gap: 8px;
+
+  /* Imagen/cartel en móvil: proporción equilibrada que deja ver el contenido */
+  .ige-featured-media {
+    width: 100%;
   }
-  .ige-cd-num {
+
+  .ige-slider-container {
+    max-width: 100%;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--ige-border);
+  }
+
+  .ige-media-img {
+    max-height: 330px;
+    border-radius: 8px;
+  }
+
+  .ige-media-img.fit-contain {
+    padding: 6px;
+  }
+
+  /* Botón de ampliar en móvil: bien posicionado y táctil */
+  .ige-zoom-btn {
+    bottom: 8px;
+    right: 8px;
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 16px;
+  }
+
+  /* Botones del slider más amigables al tacto */
+  .ige-slider-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  /* Tipografía y textos ajustados para evitar scroll excesivo */
+  .ige-kicker {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+
+  .ige-featured-title {
     font-size: 24px;
+    line-height: 1.22;
+    margin: 0 0 12px 0;
   }
+
+  .ige-featured-excerpt {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 12px;
+    margin-bottom: 16px;
+    border-left-width: 3px;
+  }
+
+  /* Fichas de metadatos (Fecha y Lugar) apiladas al 100% de ancho */
+  .ige-meta-badges {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .ige-meta-chip {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    gap: 10px;
+  }
+
+  .ige-chip-icon {
+    font-size: 18px;
+  }
+
+  .ige-chip-label {
+    font-size: 10px;
+  }
+
+  .ige-chip-value {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* Temporizador regresivo en móvil: rejilla de 4 casillas nativas y simétricas */
+  .ige-countdown-wrap {
+    padding: 12px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .ige-countdown-header {
+    font-size: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .ige-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .ige-cd-box {
+    min-width: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 8px 2px;
+    border: 1px solid rgba(219, 234, 254, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
+  .ige-cd-num {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .ige-cd-unit {
+    font-size: 10px;
+    margin-top: 3px;
+  }
+
+  /* Ocultar dos puntos en móvil para no desalinear las casillas */
+  .ige-cd-colon {
+    display: none;
+  }
+
+  /* Botones de acción táctiles (altura mínima accesible 44px WCAG) */
   .ige-buttons-row {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
+
   .ige-buttons-row .ige-btn {
     width: 100%;
+    min-height: 46px;
+    padding: 12px 18px;
+    font-size: 15px;
+    border-radius: 10px;
     text-align: center;
+    justify-content: center;
+  }
+
+  /* Rejilla de tarjetas regulares a 1 columna en móvil */
+  .ige-cols-2, .ige-cols-3, .ige-cols-4 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ige-card-media-wrap {
+    height: 220px;
+  }
+
+  .ige-regular-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ige-featured-card {
+    padding: 14px;
+  }
+  .ige-media-img {
+    max-height: 280px;
+  }
+  .ige-featured-title {
+    font-size: 22px;
+  }
+  .ige-cd-num {
+    font-size: 20px;
   }
 }
 
