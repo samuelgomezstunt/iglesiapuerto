@@ -1,0 +1,726 @@
+/**
+ * Iglesia · Próximos Eventos - Estilos Frontend
+ */
+
+:root {
+  --ige-primary: var(--e-global-color-primary, #111827);
+  --ige-secondary: var(--e-global-color-secondary, #4B5563);
+  --ige-accent: var(--e-global-color-accent, #B8860B);
+  --ige-blue: #135BEC;
+  --ige-blue-light: #EFF6FF;
+  --ige-bg-card: #FFFFFF;
+  --ige-border: #E5E7EB;
+  --ige-radius: 16px;
+  --ige-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
+}
+
+.ige-events-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ige-events-wrapper * {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   EVENTO DESTACADO (ANCHO COMPLETO / 2 COLUMNAS)
+   ========================================================================== */
+.ige-featured-section {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.ige-featured-card {
+  background: var(--ige-bg-card);
+  border: 1px solid var(--ige-border);
+  border-radius: var(--ige-radius);
+  box-shadow: var(--ige-shadow);
+  padding: 36px;
+  margin-bottom: 30px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ige-featured-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Columna Visual / Slider */
+.ige-featured-media {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ige-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fdfdfd;
+}
+
+.ige-slider-track {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.ige-slide {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+.ige-slide.active {
+  display: block;
+}
+
+.ige-media-img {
+  width: 100%;
+  height: auto;
+  max-height: 580px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.ige-media-img.fit-contain {
+  object-fit: contain;
+}
+
+.ige-media-img.fit-cover {
+  object-fit: cover;
+  min-height: 400px;
+}
+
+/* Controles del Slider */
+.ige-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #111827;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.ige-slider-btn:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.ige-slider-btn.prev { left: 12px; }
+.ige-slider-btn.next { right: 12px; }
+
+.ige-slider-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.ige-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.ige-dot.active {
+  background: var(--ige-blue);
+  transform: scale(1.25);
+  border-color: #ffffff;
+}
+
+/* Columna de Información */
+.ige-featured-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ige-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--ige-accent);
+  margin-bottom: 8px;
+}
+
+.ige-featured-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ige-primary);
+  margin: 0 0 16px 0;
+}
+
+.ige-featured-excerpt {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: #4B5563;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--ige-accent);
+  padding-left: 16px;
+}
+
+.ige-featured-excerpt p {
+  margin: 0;
+}
+
+/* Chips de Meta */
+.ige-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.ige-meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F9FAFB;
+  border: 1px solid #F3F4F6;
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.ige-chip-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ige-chip-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ige-chip-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9CA3AF;
+  margin-bottom: 2px;
+}
+
+.ige-chip-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.ige-chip-time {
+  font-weight: 600;
+  color: #4B5563;
+}
+
+/* Temporizador Regresivo */
+.ige-countdown-wrap {
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+  border: 1px solid #DBEAFE;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 28px;
+}
+
+.ige-countdown-header {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3B82F6;
+  margin-bottom: 10px;
+}
+
+.ige-countdown-grid {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ige-cd-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 55px;
+}
+
+.ige-cd-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: #1E3A8A;
+}
+
+.ige-cd-unit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+.ige-cd-colon {
+  font-size: 24px;
+  font-weight: 700;
+  color: #93C5FD;
+  margin-bottom: 12px;
+}
+
+/* Botones de Acción */
+.ige-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.ige-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.ige-btn-primary {
+  background: var(--ige-blue);
+  color: #ffffff !important;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(19, 91, 236, 0.25);
+}
+
+.ige-btn-primary:hover {
+  background: #0f46b8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(19, 91, 236, 0.35);
+}
+
+.ige-btn-secondary {
+  background: #ffffff;
+  color: #374151 !important;
+  border: 1px solid #D1D5DB;
+}
+
+.ige-btn-secondary:hover {
+  background: #F9FAFB;
+  border-color: #9CA3AF;
+  transform: translateY(-1px);
+}
+
+.ige-btn-calendar {
+  background: #F3F4F6;
+  color: #1F2937 !important;
+  border: 1px solid #E5E7EB;
+}
+
+.ige-btn-calendar:hover {
+  background: #E5E7EB;
+  color: #111827 !important;
+}
+
+/* ==========================================================================
+   REJILLA DE TARJETAS REGULARES
+   ========================================================================== */
+.ige-regular-section {
+  width: 100%;
+  margin-top: 36px;
+}
+
+.ige-regular-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ige-primary);
+  margin: 0 0 20px 0;
+  position: relative;
+  display: inline-block;
+}
+
+.ige-regular-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--ige-accent);
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.ige-grid-section {
+  display: grid;
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.ige-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ige-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.ige-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.ige-event-card {
+  background: var(--ige-bg-card);
+  border: 1px solid var(--ige-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ige-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.ige-card-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #F8FAFC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--ige-border);
+}
+
+.ige-card-img-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+.ige-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.ige-card-img.fit-contain {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.ige-card-img.fit-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.ige-event-card:hover .ige-card-img.fit-cover {
+  transform: scale(1.04);
+}
+
+.ige-event-card:hover .ige-card-img.fit-contain {
+  transform: scale(1.02);
+}
+
+/* Botón flotante para ampliar imagen */
+.ige-zoom-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  color: #1F2937;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+  z-index: 5;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.ige-zoom-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--ige-blue);
+  flex-shrink: 0;
+}
+
+.ige-zoom-btn:hover,
+.ige-card-img-link:hover .ige-zoom-btn,
+.ige-lightbox-link:hover .ige-zoom-btn {
+  background: #ffffff;
+  color: var(--ige-blue);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(19, 91, 236, 0.22);
+}
+
+.ige-date-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  z-index: 4;
+}
+
+.badge-day {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.badge-month {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ige-blue);
+  margin-top: 3px;
+}
+
+.ige-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.ige-card-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ige-accent);
+  margin-bottom: 4px;
+}
+
+.ige-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+}
+
+.ige-card-title a {
+  color: var(--ige-primary);
+  text-decoration: none;
+}
+
+.ige-card-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 6px;
+}
+
+.ige-card-excerpt {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin: 8px 0 16px 0;
+  flex-grow: 1;
+}
+
+.ige-card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.ige-btn-sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* Mensaje vacío */
+.ige-empty-notice {
+  text-align: center;
+  padding: 40px 20px;
+  background: #F9FAFB;
+  border-radius: 12px;
+  border: 1px dashed #D1D5DB;
+  color: #6B7280;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .ige-featured-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .ige-cols-3, .ige-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .ige-featured-card {
+    padding: 20px;
+  }
+  .ige-featured-title {
+    font-size: 28px;
+  }
+  .ige-featured-excerpt {
+    font-size: 17px;
+  }
+  .ige-cols-2, .ige-cols-3, .ige-cols-4 {
+    grid-template-columns: 1fr;
+  }
+  .ige-countdown-grid {
+    gap: 8px;
+  }
+  .ige-cd-num {
+    font-size: 24px;
+  }
+  .ige-buttons-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ige-buttons-row .ige-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   MODAL LIGHTBOX FALLBACK (STANDALONE & STATIC SITES)
+   ========================================================================== */
+.ige-lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(17, 24, 39, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.ige-lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ige-lightbox-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ige-lightbox-modal-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.ige-lightbox-modal-caption {
+  color: #F3F4F6;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.ige-lightbox-modal-close {
+  position: absolute;
+  top: -44px;
+  right: -8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ige-lightbox-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
