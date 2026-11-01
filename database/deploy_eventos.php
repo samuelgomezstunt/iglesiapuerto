@@ -131,7 +131,7 @@ function deploy_eventos_for_current_blog() {
     update_post_meta( $navidad_id, 'ige_calendar_button', '1' );
     update_post_meta( $navidad_id, 'ige_hide_after_end', '1' );
     update_post_meta( $navidad_id, 'ige_image_fit', 'contain' );
-    update_post_meta( $navidad_id, 'ige_buttons', wp_json_encode( $buttons ) );
+    update_post_meta( $navidad_id, 'ige_buttons', wp_slash( wp_json_encode( $buttons, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
     if ( $navidad_media_id > 0 ) {
         update_post_meta( $navidad_id, '_thumbnail_id', $navidad_media_id );
         update_post_meta( $navidad_id, 'ige_gallery', (string) $navidad_media_id );
@@ -181,7 +181,7 @@ function deploy_eventos_for_current_blog() {
     update_post_meta( $retiro_id, 'ige_calendar_button', '1' );
     update_post_meta( $retiro_id, 'ige_hide_after_end', '1' );
     update_post_meta( $retiro_id, 'ige_image_fit', 'contain' );
-    update_post_meta( $retiro_id, 'ige_buttons', wp_json_encode( $retiro_buttons ) );
+    update_post_meta( $retiro_id, 'ige_buttons', wp_slash( wp_json_encode( $retiro_buttons, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
 
     // 4. Integrar shortcode en la página de Inicio de Elementor si procede
     $home_page = get_posts([

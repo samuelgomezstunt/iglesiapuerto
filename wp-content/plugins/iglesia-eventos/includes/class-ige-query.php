@@ -124,7 +124,22 @@ class IGE_Query {
 		$image_fit     = (string) ( get_post_meta( $post_id, 'ige_image_fit', true ) ?: 'contain' );
 		$gallery_mode  = (string) ( get_post_meta( $post_id, 'ige_gallery_mode', true ) ?: 'slider' );
 		$raw_buttons   = (string) get_post_meta( $post_id, 'ige_buttons', true );
+		if ( ! empty( $raw_buttons ) && ( strpos( $raw_buttons, 'u00' ) !== false || strpos( $raw_buttons, '\u00' ) !== false ) ) {
+			$raw_buttons = (string) preg_replace_callback( '/\\\\?u([0-9a-fA-F]{4})/', function( $m ) {
+				return mb_chr( hexdec( $m[1] ), 'UTF-8' );
+			}, $raw_buttons );
+		}
 		$buttons       = json_decode( $raw_buttons ?: '[]', true ) ?: [];
+		if ( is_array( $buttons ) ) {
+			foreach ( $buttons as &$b ) {
+				if ( isset( $b['text'] ) && ( strpos( $b['text'], 'u00' ) !== false || strpos( $b['text'], '\u00' ) !== false ) ) {
+					$b['text'] = (string) preg_replace_callback( '/\\\\?u([0-9a-fA-F]{4})/', function( $m ) {
+						return mb_chr( hexdec( $m[1] ), 'UTF-8' );
+					}, (string) $b['text'] );
+				}
+			}
+			unset( $b );
+		}
 
 		if ( empty( $maps_url ) && ! empty( $address ) ) {
 			$maps_url = 'https://maps.google.com/?q=' . rawurlencode( $address );

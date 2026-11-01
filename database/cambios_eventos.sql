@@ -1,6 +1,6 @@
 -- ====================================================================
 -- MIGRACION DE CAMBIOS: SISTEMA DE EVENTOS (iglesia-eventos)
--- Fecha de exportacion: 2026-11-01 10:09:22
+-- Fecha de exportacion: 2026-11-01 10:38:13
 -- Incluye CPT iglesia_evento, imagenes adjuntas, metadatos y
 -- configuracion de Elementor para la pagina de Inicio en todos los sitios.
 -- ====================================================================
@@ -16,7 +16,7 @@ UPDATE wp_sitemeta SET meta_value = 'a:5:{s:23:\"elementor/elementor.php\";i:178
 -- --------------------------------------------------------------------
 -- Posts para Web Principal (Sitio 1)
 REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('624', '1', '2026-10-31 16:43:09', '2026-10-31 16:43:09', '<p>Te invitamos a la cena de Navidad. Ven a celebrar y recordar con nosotros el sentido y propósito de la Navidad.</p><p><strong>19 de diciembre | 20:00</strong><br>Calle Don Quijote, 42, esquina La Mancha (Puerto del Rosario)</p>', 'Cena de Navidad', 'Ven a celebrar y recordar con nosotros el sentido y propósito de la Navidad.', 'publish', 'closed', 'closed', '', 'cena-de-navidad-2026', '', '', '2026-10-31 16:43:09', '2026-10-31 16:43:09', '', '0', 'https://iglesia.test/evento/cena-de-navidad-2026/', '0', 'iglesia_evento', '', '0');
-REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('625', '1', '2026-11-01 08:40:21', '2026-11-01 08:40:21', '<p><strong>3º Retiro de Mujeres — Asambleas de Hermanos de Canarias</strong></p><p><em>“Aprendiendo a tener gozo y servir al Señor en cualquier etapa de la vida”</em></p><p><strong>Fecha:</strong> 02 al 04 Octubre 2026<br><strong>Ubicación:</strong> Hotel Valle Orotava – Tenerife</p>', '3º Retiro de Mujeres', '“Aprendiendo a tener gozo y servir al Señor en cualquier etapa de la vida”', 'publish', 'closed', 'closed', '', '3-retiro-de-mujeres', '', '', '2026-11-01 09:03:31', '2026-11-01 09:03:31', '', '0', 'https://iglesia.test/?post_type=iglesia_evento&#038;p=625', '0', 'iglesia_evento', '', '0');
+REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('625', '1', '2026-11-01 08:40:21', '2026-11-01 08:40:21', '<p><strong>3º Retiro de Mujeres — Asambleas de Hermanos de Canarias</strong></p><p><em>“Aprendiendo a tener gozo y servir al Señor en cualquier etapa de la vida”</em></p><p><strong>Fecha:</strong> 02 al 04 Octubre 2026<br><strong>Ubicación:</strong> Hotel Valle Orotava – Tenerife</p>', '3º Retiro de Mujeres', '“Aprendiendo a tener gozo y servir al Señor en cualquier etapa de la vida”', 'publish', 'closed', 'closed', '', '3-retiro-de-mujeres', '', '', '2026-11-01 10:19:58', '2026-11-01 10:19:58', '', '0', 'https://iglesia.test/?post_type=iglesia_evento&#038;p=625', '0', 'iglesia_evento', '', '0');
 REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('273', '0', '2026-08-19 12:23:19', '2026-08-19 12:23:19', '', '3 Retiro de Mujeres - Disfrutando del Camino', '', 'inherit', 'open', 'closed', '', '3-retiro-de-mujeres-disfrutando-del-camino', '', '', '2026-08-19 12:23:19', '2026-08-19 12:23:19', '', '0', 'https://iglesia.test/wp-content/uploads/2026/08/media_1787142172835.jpg', '0', 'attachment', 'image/jpeg', '0');
 REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('623', '0', '2026-10-31 16:42:40', '2026-10-31 16:42:40', '', 'Cena de Navidad 2026', '', 'inherit', 'open', 'closed', '', 'cena-de-navidad-2026', '', '', '2026-10-31 16:42:40', '2026-10-31 16:42:40', '', '0', 'https://iglesia.test/wp-content/uploads/2026/10/cena-navidad-2026.png', '0', 'attachment', 'image/png', '0');
 REPLACE INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('626', '0', '2026-10-31 16:43:58', '2026-10-31 16:43:58', '', '3º Retiro de Mujeres', '', 'inherit', 'open', 'closed', '', '3o-retiro-de-mujeres', '', '', '2026-10-31 16:43:58', '2026-10-31 16:43:58', '', '0', 'https://iglesia.test/3o-retiro-de-mujeres/', '0', 'attachment', 'image/jpeg', '0');
@@ -59,7 +59,7 @@ REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALU
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5674', '625', 'ige_location_name', 'Hotel Valle Orotava – Tenerife');
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5675', '625', 'ige_start', '2026-10-02 16:00');
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5676', '625', '_thumbnail_id', '273');
-REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5790', '625', '_edit_lock', '1793527354:1');
+REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5790', '625', '_edit_lock', '1793528401:1');
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5791', '625', '_wp_old_date', '2026-10-31');
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5792', '625', '_edit_last', '1');
 REPLACE INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5793', '625', 'ige_maps_url', '');
@@ -103,7 +103,7 @@ REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VA
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5350', '598', 'ige_gallery', '596');
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5351', '598', 'ige_gallery_mode', 'slider');
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5352', '598', 'ige_image_fit', 'contain');
-REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5353', '598', 'ige_buttons', '[{\"text\":\"Cu00f3mo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
+REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5353', '598', 'ige_buttons', '[{\"text\":\"Cómo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5354', '598', 'ige_calendar_button', '1');
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5355', '598', 'ige_hide_after_end', '1');
 REPLACE INTO `wp_2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5356', '599', '_thumbnail_id', '597');
@@ -160,7 +160,7 @@ REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VA
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5199', '579', 'ige_gallery', '577');
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5200', '579', 'ige_gallery_mode', 'slider');
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5201', '579', 'ige_image_fit', 'contain');
-REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5202', '579', 'ige_buttons', '[{\"text\":\"Cu00f3mo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
+REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5202', '579', 'ige_buttons', '[{\"text\":\"Cómo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5203', '579', 'ige_calendar_button', '1');
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5204', '579', 'ige_hide_after_end', '1');
 REPLACE INTO `wp_3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5205', '580', '_thumbnail_id', '578');
@@ -217,7 +217,7 @@ REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VA
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5316', '591', 'ige_gallery', '589');
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5317', '591', 'ige_gallery_mode', 'slider');
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5318', '591', 'ige_image_fit', 'contain');
-REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5319', '591', 'ige_buttons', '[{\"text\":\"Cu00f3mo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
+REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5319', '591', 'ige_buttons', '[{\"text\":\"Cómo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5320', '591', 'ige_calendar_button', '1');
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5321', '591', 'ige_hide_after_end', '1');
 REPLACE INTO `wp_4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5322', '592', '_thumbnail_id', '590');
@@ -274,7 +274,7 @@ REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VA
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5295', '591', 'ige_gallery', '589');
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5296', '591', 'ige_gallery_mode', 'slider');
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5297', '591', 'ige_image_fit', 'contain');
-REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5298', '591', 'ige_buttons', '[{\"text\":\"Cu00f3mo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
+REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5298', '591', 'ige_buttons', '[{\"text\":\"Cómo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5299', '591', 'ige_calendar_button', '1');
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5300', '591', 'ige_hide_after_end', '1');
 REPLACE INTO `wp_5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5301', '592', '_thumbnail_id', '590');
@@ -331,7 +331,7 @@ REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VA
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5275', '587', 'ige_gallery', '585');
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5276', '587', 'ige_gallery_mode', 'slider');
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5277', '587', 'ige_image_fit', 'contain');
-REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5278', '587', 'ige_buttons', '[{\"text\":\"Cu00f3mo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
+REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5278', '587', 'ige_buttons', '[{\"text\":\"Cómo llegar\",\"url\":\"https://maps.google.com/?q=Calle+Don+Quijote+42+Puerto+del+Rosario\",\"new_tab\":true,\"style\":\"primary\"}]');
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5279', '587', 'ige_calendar_button', '1');
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5280', '587', 'ige_hide_after_end', '1');
 REPLACE INTO `wp_6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES ('5281', '588', '_thumbnail_id', '586');

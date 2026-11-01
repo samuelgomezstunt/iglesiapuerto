@@ -117,4 +117,10 @@ jQuery(document).ready(function($) {
   $(document).on('input change', '#ige_buttons_table input, #ige_buttons_table select', function() {
     updateButtonsJson();
   });
+
+  // Asegurar sincronización en submit del formulario
+  $('form#post').on('submit', function() {
+    updateButtonsJson();
+    updateGalleryInput();
+  });
 });

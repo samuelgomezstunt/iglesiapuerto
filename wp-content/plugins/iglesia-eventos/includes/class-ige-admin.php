@@ -252,15 +252,37 @@ class IGE_Admin {
 		<?php
 	}
 
+	/**
+	 * Repara secuencias Unicode corruptas tipo u00f3 o \u00f3 producidas
+	 * por stripslashes_deep() en wp_postmeta.
+	 */
+	public static function repair_unicode_string( string $str ): string {
+		if ( strpos( $str, 'u00' ) !== false || strpos( $str, '\u00' ) !== false ) {
+			$str = (string) preg_replace_callback( '/\\\\?u([0-9a-fA-F]{4})/', function( $m ) {
+				return mb_chr( hexdec( $m[1] ), 'UTF-8' );
+			}, $str );
+		}
+		return $str;
+	}
+
 	public static function render_box_buttons( WP_Post $post ): void {
 		$raw_buttons = get_post_meta( $post->ID, 'ige_buttons', true );
+		if ( ! empty( $raw_buttons ) ) {
+			$raw_buttons = self::repair_unicode_string( (string) $raw_buttons );
+		}
 		$buttons     = json_decode( $raw_buttons ?: '[]', true );
 		if ( ! is_array( $buttons ) ) {
 			$buttons = [];
 		}
+		foreach ( $buttons as &$b ) {
+			if ( isset( $b['text'] ) ) {
+				$b['text'] = self::repair_unicode_string( (string) $b['text'] );
+			}
+		}
+		unset( $b );
 		?>
 		<div class="ige-admin-grid">
-			<input type="hidden" name="ige_buttons" id="ige_buttons_json" value="<?php echo esc_attr( wp_json_encode( $buttons ) ); ?>" />
+			<input type="hidden" name="ige_buttons" id="ige_buttons_json" value="<?php echo esc_attr( wp_json_encode( $buttons, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ); ?>" />
 			<table class="widefat striped" id="ige_buttons_table">
 				<thead>
 					<tr>
@@ -366,20 +388,22 @@ class IGE_Admin {
 		// Botones JSON
 		if ( isset( $_POST['ige_buttons'] ) ) {
 			$raw     = wp_unslash( $_POST['ige_buttons'] );
+			$raw     = self::repair_unicode_string( (string) $raw );
 			$decoded = json_decode( $raw, true );
 			$clean   = [];
 			if ( is_array( $decoded ) ) {
 				foreach ( $decoded as $b ) {
 					if ( empty( $b['text'] ) && empty( $b['url'] ) ) continue;
+					$btn_text = self::repair_unicode_string( sanitize_text_field( $b['text'] ?? '' ) );
 					$clean[] = [
-						'text'    => sanitize_text_field( $b['text'] ?? '' ),
+						'text'    => $btn_text,
 						'url'     => esc_url_raw( $b['url'] ?? '' ),
 						'new_tab' => ! empty( $b['new_tab'] ),
 						'style'   => in_array( $b['style'] ?? '', [ 'primary', 'secondary' ], true ) ? $b['style'] : 'primary',
 					];
 				}
 			}
-			update_post_meta( $post_id, 'ige_buttons', wp_json_encode( $clean ) );
+			update_post_meta( $post_id, 'ige_buttons', wp_slash( wp_json_encode( $clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
 		}
 	}
 
